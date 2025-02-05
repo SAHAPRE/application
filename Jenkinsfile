@@ -25,7 +25,7 @@ stages {
         stage('Push Docker Image') {
             steps {
                 script {
-                    sh 'docker push 861276111806.dkr.ecr.ap-south-1.amazonaws.com/prod/my-project:latest'
+                    sh 'docker push 861276111806.dkr.ecr.ap-south-1.amazonaws.com/prod/my-project:${BUILD_NUMBER}'
                     }
                 }
             }
