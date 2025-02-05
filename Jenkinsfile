@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent master
 stages {
         stage('Clone Repository') {
             steps {
@@ -18,7 +18,7 @@ stages {
             steps {
 			  script {
 			sh ' docker build -t prod/my-project -f /var/lib/jenkins/workspace/ecr/app/Dockerfile /var/lib/jenkins/workspace/ecr/app/'
-			sh 'docker tag prod/my-project:latest 861276111806.dkr.ecr.ap-south-1.amazonaws.com/prod/my-project:{env.BUILD_NUMBER}'
+			sh 'docker tag prod/my-project:latest 861276111806.dkr.ecr.ap-south-1.amazonaws.com/prod/my-project:${env.BUILD_NUMBER}'
               } 
             }
         }
