@@ -1,6 +1,13 @@
 FROM python:3.9-slim
+
 WORKDIR /app
-COPY /var/lib/jenkins/workspace/ecr/requirements.txt /var/lib/jenkins/workspace/ecr/requirements.txt
-RUN pip install -r /var/lib/jenkins/workspace/ecr/requirements.txt
-#COPY . .
+
+# Now copy from the same context (the 'app' directory)
+#COPY requirements.txt /app/requirements.txt
+COPY . .
+
+RUN pip install -r requirements.txt
+
+
 CMD ["python", "app.py"]
+
